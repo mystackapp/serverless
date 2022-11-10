@@ -1,0 +1,701 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: query_root
+    mutation: mutation_root
+    subscription: subscription_root
+}
+
+"whether this query should be cached (Hasura Cloud only)"
+directive @cached(
+    "refresh the cache entry"
+    refresh: Boolean! = false,
+    "measured in seconds"
+    ttl: Int! = 60
+) on QUERY
+
+type AdminRegisterOutput {
+    accessToken: String!
+}
+
+"columns and relationships of \"admin\""
+type admin {
+    id: uuid!
+    password: String!
+    username: String!
+}
+
+"aggregated selection of \"admin\""
+type admin_aggregate {
+    aggregate: admin_aggregate_fields
+    nodes: [admin!]!
+}
+
+"aggregate fields of \"admin\""
+type admin_aggregate_fields {
+    count(columns: [admin_select_column!], distinct: Boolean): Int!
+    max: admin_max_fields
+    min: admin_min_fields
+}
+
+"aggregate max on columns"
+type admin_max_fields {
+    id: uuid
+    password: String
+    username: String
+}
+
+"aggregate min on columns"
+type admin_min_fields {
+    id: uuid
+    password: String
+    username: String
+}
+
+"response of any mutation on the table \"admin\""
+type admin_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [admin!]!
+}
+
+"columns and relationships of \"menu\""
+type menu {
+    id: uuid!
+    image: String!
+    ingredients: String!
+    price: numeric!
+    title: String!
+    weight: numeric!
+}
+
+"aggregated selection of \"menu\""
+type menu_aggregate {
+    aggregate: menu_aggregate_fields
+    nodes: [menu!]!
+}
+
+"aggregate fields of \"menu\""
+type menu_aggregate_fields {
+    avg: menu_avg_fields
+    count(columns: [menu_select_column!], distinct: Boolean): Int!
+    max: menu_max_fields
+    min: menu_min_fields
+    stddev: menu_stddev_fields
+    stddev_pop: menu_stddev_pop_fields
+    stddev_samp: menu_stddev_samp_fields
+    sum: menu_sum_fields
+    var_pop: menu_var_pop_fields
+    var_samp: menu_var_samp_fields
+    variance: menu_variance_fields
+}
+
+"aggregate avg on columns"
+type menu_avg_fields {
+    price: Float
+    weight: Float
+}
+
+"aggregate max on columns"
+type menu_max_fields {
+    id: uuid
+    image: String
+    ingredients: String
+    price: numeric
+    title: String
+    weight: numeric
+}
+
+"aggregate min on columns"
+type menu_min_fields {
+    id: uuid
+    image: String
+    ingredients: String
+    price: numeric
+    title: String
+    weight: numeric
+}
+
+"response of any mutation on the table \"menu\""
+type menu_mutation_response {
+    "number of rows affected by the mutation"
+    affected_rows: Int!
+    "data from the rows affected by the mutation"
+    returning: [menu!]!
+}
+
+"aggregate stddev on columns"
+type menu_stddev_fields {
+    price: Float
+    weight: Float
+}
+
+"aggregate stddev_pop on columns"
+type menu_stddev_pop_fields {
+    price: Float
+    weight: Float
+}
+
+"aggregate stddev_samp on columns"
+type menu_stddev_samp_fields {
+    price: Float
+    weight: Float
+}
+
+"aggregate sum on columns"
+type menu_sum_fields {
+    price: numeric
+    weight: numeric
+}
+
+"aggregate var_pop on columns"
+type menu_var_pop_fields {
+    price: Float
+    weight: Float
+}
+
+"aggregate var_samp on columns"
+type menu_var_samp_fields {
+    price: Float
+    weight: Float
+}
+
+"aggregate variance on columns"
+type menu_variance_fields {
+    price: Float
+    weight: Float
+}
+
+"mutation root"
+type mutation_root {
+    "delete data from the table: \"admin\""
+    delete_admin(
+        "filter the rows which have to be deleted"
+        where: admin_bool_exp!
+    ): admin_mutation_response
+    "delete single row from the table: \"admin\""
+    delete_admin_by_pk(id: uuid!): admin
+    "delete data from the table: \"menu\""
+    delete_menu(
+        "filter the rows which have to be deleted"
+        where: menu_bool_exp!
+    ): menu_mutation_response
+    "delete single row from the table: \"menu\""
+    delete_menu_by_pk(id: uuid!): menu
+    "insert data into the table: \"admin\""
+    insert_admin(
+        "the rows to be inserted"
+        objects: [admin_insert_input!]!,
+        "upsert condition"
+        on_conflict: admin_on_conflict
+    ): admin_mutation_response
+    "insert a single row into the table: \"admin\""
+    insert_admin_one(
+        "the row to be inserted"
+        object: admin_insert_input!,
+        "upsert condition"
+        on_conflict: admin_on_conflict
+    ): admin
+    "insert data into the table: \"menu\""
+    insert_menu(
+        "the rows to be inserted"
+        objects: [menu_insert_input!]!,
+        "upsert condition"
+        on_conflict: menu_on_conflict
+    ): menu_mutation_response
+    "insert a single row into the table: \"menu\""
+    insert_menu_one(
+        "the row to be inserted"
+        object: menu_insert_input!,
+        "upsert condition"
+        on_conflict: menu_on_conflict
+    ): menu
+    "Admin registration"
+    register(admin: AdminRegisterInput!): AdminRegisterOutput
+    "update data of the table: \"admin\""
+    update_admin(
+        "sets the columns of the filtered rows to the given values"
+        _set: admin_set_input,
+        "filter the rows which have to be updated"
+        where: admin_bool_exp!
+    ): admin_mutation_response
+    "update single row of the table: \"admin\""
+    update_admin_by_pk(
+        "sets the columns of the filtered rows to the given values"
+        _set: admin_set_input,
+        pk_columns: admin_pk_columns_input!
+    ): admin
+    "update multiples rows of table: \"admin\""
+    update_admin_many(
+        "updates to execute, in order"
+        updates: [admin_updates!]!
+    ): [admin_mutation_response]
+    "update data of the table: \"menu\""
+    update_menu(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: menu_inc_input,
+        "sets the columns of the filtered rows to the given values"
+        _set: menu_set_input,
+        "filter the rows which have to be updated"
+        where: menu_bool_exp!
+    ): menu_mutation_response
+    "update single row of the table: \"menu\""
+    update_menu_by_pk(
+        "increments the numeric columns with given value of the filtered values"
+        _inc: menu_inc_input,
+        "sets the columns of the filtered rows to the given values"
+        _set: menu_set_input,
+        pk_columns: menu_pk_columns_input!
+    ): menu
+    "update multiples rows of table: \"menu\""
+    update_menu_many(
+        "updates to execute, in order"
+        updates: [menu_updates!]!
+    ): [menu_mutation_response]
+}
+
+type query_root {
+    "fetch data from the table: \"admin\""
+    admin(
+        "distinct select on columns"
+        distinct_on: [admin_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [admin_order_by!],
+        "filter the rows returned"
+        where: admin_bool_exp
+    ): [admin!]!
+    "fetch aggregated fields from the table: \"admin\""
+    admin_aggregate(
+        "distinct select on columns"
+        distinct_on: [admin_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [admin_order_by!],
+        "filter the rows returned"
+        where: admin_bool_exp
+    ): admin_aggregate!
+    "fetch data from the table: \"admin\" using primary key columns"
+    admin_by_pk(id: uuid!): admin
+    "fetch data from the table: \"menu\""
+    menu(
+        "distinct select on columns"
+        distinct_on: [menu_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [menu_order_by!],
+        "filter the rows returned"
+        where: menu_bool_exp
+    ): [menu!]!
+    "fetch aggregated fields from the table: \"menu\""
+    menu_aggregate(
+        "distinct select on columns"
+        distinct_on: [menu_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [menu_order_by!],
+        "filter the rows returned"
+        where: menu_bool_exp
+    ): menu_aggregate!
+    "fetch data from the table: \"menu\" using primary key columns"
+    menu_by_pk(id: uuid!): menu
+}
+
+type subscription_root {
+    "fetch data from the table: \"admin\""
+    admin(
+        "distinct select on columns"
+        distinct_on: [admin_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [admin_order_by!],
+        "filter the rows returned"
+        where: admin_bool_exp
+    ): [admin!]!
+    "fetch aggregated fields from the table: \"admin\""
+    admin_aggregate(
+        "distinct select on columns"
+        distinct_on: [admin_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [admin_order_by!],
+        "filter the rows returned"
+        where: admin_bool_exp
+    ): admin_aggregate!
+    "fetch data from the table: \"admin\" using primary key columns"
+    admin_by_pk(id: uuid!): admin
+    "fetch data from the table in a streaming manner: \"admin\""
+    admin_stream(
+        "maximum number of rows returned in a single batch"
+        batch_size: Int!,
+        "cursor to stream the results returned by the query"
+        cursor: [admin_stream_cursor_input]!,
+        "filter the rows returned"
+        where: admin_bool_exp
+    ): [admin!]!
+    "fetch data from the table: \"menu\""
+    menu(
+        "distinct select on columns"
+        distinct_on: [menu_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [menu_order_by!],
+        "filter the rows returned"
+        where: menu_bool_exp
+    ): [menu!]!
+    "fetch aggregated fields from the table: \"menu\""
+    menu_aggregate(
+        "distinct select on columns"
+        distinct_on: [menu_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [menu_order_by!],
+        "filter the rows returned"
+        where: menu_bool_exp
+    ): menu_aggregate!
+    "fetch data from the table: \"menu\" using primary key columns"
+    menu_by_pk(id: uuid!): menu
+    "fetch data from the table in a streaming manner: \"menu\""
+    menu_stream(
+        "maximum number of rows returned in a single batch"
+        batch_size: Int!,
+        "cursor to stream the results returned by the query"
+        cursor: [menu_stream_cursor_input]!,
+        "filter the rows returned"
+        where: menu_bool_exp
+    ): [menu!]!
+}
+
+"unique or primary key constraints on table \"admin\""
+enum admin_constraint {
+    "unique or primary key constraint on columns \"id\""
+    admin_pkey
+    "unique or primary key constraint on columns \"username\""
+    admin_username_key
+}
+
+"select columns of table \"admin\""
+enum admin_select_column {
+    "column name"
+    id
+    "column name"
+    password
+    "column name"
+    username
+}
+
+"update columns of table \"admin\""
+enum admin_update_column {
+    "column name"
+    id
+    "column name"
+    password
+    "column name"
+    username
+}
+
+"ordering argument of a cursor"
+enum cursor_ordering {
+    "ascending ordering of the cursor"
+    ASC
+    "descending ordering of the cursor"
+    DESC
+}
+
+"unique or primary key constraints on table \"menu\""
+enum menu_constraint {
+    "unique or primary key constraint on columns \"id\""
+    menu_pkey
+}
+
+"select columns of table \"menu\""
+enum menu_select_column {
+    "column name"
+    id
+    "column name"
+    image
+    "column name"
+    ingredients
+    "column name"
+    price
+    "column name"
+    title
+    "column name"
+    weight
+}
+
+"update columns of table \"menu\""
+enum menu_update_column {
+    "column name"
+    id
+    "column name"
+    image
+    "column name"
+    ingredients
+    "column name"
+    price
+    "column name"
+    title
+    "column name"
+    weight
+}
+
+"column ordering options"
+enum order_by {
+    "in ascending order, nulls last"
+    asc
+    "in ascending order, nulls first"
+    asc_nulls_first
+    "in ascending order, nulls last"
+    asc_nulls_last
+    "in descending order, nulls first"
+    desc
+    "in descending order, nulls first"
+    desc_nulls_first
+    "in descending order, nulls last"
+    desc_nulls_last
+}
+
+scalar numeric
+
+scalar uuid
+
+input AdminRegisterInput {
+    password: String!
+    username: String!
+}
+
+"Boolean expression to compare columns of type \"String\". All fields are combined with logical 'AND'."
+input String_comparison_exp {
+    _eq: String
+    _gt: String
+    _gte: String
+    "does the column match the given case-insensitive pattern"
+    _ilike: String
+    _in: [String!]
+    "does the column match the given POSIX regular expression, case insensitive"
+    _iregex: String
+    _is_null: Boolean
+    "does the column match the given pattern"
+    _like: String
+    _lt: String
+    _lte: String
+    _neq: String
+    "does the column NOT match the given case-insensitive pattern"
+    _nilike: String
+    _nin: [String!]
+    "does the column NOT match the given POSIX regular expression, case insensitive"
+    _niregex: String
+    "does the column NOT match the given pattern"
+    _nlike: String
+    "does the column NOT match the given POSIX regular expression, case sensitive"
+    _nregex: String
+    "does the column NOT match the given SQL regular expression"
+    _nsimilar: String
+    "does the column match the given POSIX regular expression, case sensitive"
+    _regex: String
+    "does the column match the given SQL regular expression"
+    _similar: String
+}
+
+"Boolean expression to filter rows from the table \"admin\". All fields are combined with a logical 'AND'."
+input admin_bool_exp {
+    _and: [admin_bool_exp!]
+    _not: admin_bool_exp
+    _or: [admin_bool_exp!]
+    id: uuid_comparison_exp
+    password: String_comparison_exp
+    username: String_comparison_exp
+}
+
+"input type for inserting data into table \"admin\""
+input admin_insert_input {
+    id: uuid
+    password: String
+    username: String
+}
+
+"on_conflict condition type for table \"admin\""
+input admin_on_conflict {
+    constraint: admin_constraint!
+    update_columns: [admin_update_column!]! = []
+    where: admin_bool_exp
+}
+
+"Ordering options when selecting data from \"admin\"."
+input admin_order_by {
+    id: order_by
+    password: order_by
+    username: order_by
+}
+
+"primary key columns input for table: admin"
+input admin_pk_columns_input {
+    id: uuid!
+}
+
+"input type for updating data in table \"admin\""
+input admin_set_input {
+    id: uuid
+    password: String
+    username: String
+}
+
+"Streaming cursor of the table \"admin\""
+input admin_stream_cursor_input {
+    "Stream column input with initial value"
+    initial_value: admin_stream_cursor_value_input!
+    "cursor ordering"
+    ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input admin_stream_cursor_value_input {
+    id: uuid
+    password: String
+    username: String
+}
+
+input admin_updates {
+    "sets the columns of the filtered rows to the given values"
+    _set: admin_set_input
+    where: admin_bool_exp!
+}
+
+"Boolean expression to filter rows from the table \"menu\". All fields are combined with a logical 'AND'."
+input menu_bool_exp {
+    _and: [menu_bool_exp!]
+    _not: menu_bool_exp
+    _or: [menu_bool_exp!]
+    id: uuid_comparison_exp
+    image: String_comparison_exp
+    ingredients: String_comparison_exp
+    price: numeric_comparison_exp
+    title: String_comparison_exp
+    weight: numeric_comparison_exp
+}
+
+"input type for incrementing numeric columns in table \"menu\""
+input menu_inc_input {
+    price: numeric
+    weight: numeric
+}
+
+"input type for inserting data into table \"menu\""
+input menu_insert_input {
+    id: uuid
+    image: String
+    ingredients: String
+    price: numeric
+    title: String
+    weight: numeric
+}
+
+"on_conflict condition type for table \"menu\""
+input menu_on_conflict {
+    constraint: menu_constraint!
+    update_columns: [menu_update_column!]! = []
+    where: menu_bool_exp
+}
+
+"Ordering options when selecting data from \"menu\"."
+input menu_order_by {
+    id: order_by
+    image: order_by
+    ingredients: order_by
+    price: order_by
+    title: order_by
+    weight: order_by
+}
+
+"primary key columns input for table: menu"
+input menu_pk_columns_input {
+    id: uuid!
+}
+
+"input type for updating data in table \"menu\""
+input menu_set_input {
+    id: uuid
+    image: String
+    ingredients: String
+    price: numeric
+    title: String
+    weight: numeric
+}
+
+"Streaming cursor of the table \"menu\""
+input menu_stream_cursor_input {
+    "Stream column input with initial value"
+    initial_value: menu_stream_cursor_value_input!
+    "cursor ordering"
+    ordering: cursor_ordering
+}
+
+"Initial value of the column from where the streaming should start"
+input menu_stream_cursor_value_input {
+    id: uuid
+    image: String
+    ingredients: String
+    price: numeric
+    title: String
+    weight: numeric
+}
+
+input menu_updates {
+    "increments the numeric columns with given value of the filtered values"
+    _inc: menu_inc_input
+    "sets the columns of the filtered rows to the given values"
+    _set: menu_set_input
+    where: menu_bool_exp!
+}
+
+"Boolean expression to compare columns of type \"numeric\". All fields are combined with logical 'AND'."
+input numeric_comparison_exp {
+    _eq: numeric
+    _gt: numeric
+    _gte: numeric
+    _in: [numeric!]
+    _is_null: Boolean
+    _lt: numeric
+    _lte: numeric
+    _neq: numeric
+    _nin: [numeric!]
+}
+
+"Boolean expression to compare columns of type \"uuid\". All fields are combined with logical 'AND'."
+input uuid_comparison_exp {
+    _eq: uuid
+    _gt: uuid
+    _gte: uuid
+    _in: [uuid!]
+    _is_null: Boolean
+    _lt: uuid
+    _lte: uuid
+    _neq: uuid
+    _nin: [uuid!]
+}
