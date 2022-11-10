@@ -78,7 +78,7 @@ export interface Admin {
 export interface Admin_Aggregate {
   __typename?: 'admin_aggregate';
   aggregate?: Maybe<Admin_Aggregate_Fields>;
-  nodes: Array<Admin>;
+  nodes: Admin[];
 }
 
 /** aggregate fields of "admin" */
@@ -91,15 +91,15 @@ export interface Admin_Aggregate_Fields {
 
 /** aggregate fields of "admin" */
 export interface Admin_Aggregate_FieldsCountArgs {
-  columns?: InputMaybe<Array<Admin_Select_Column>>;
+  columns?: InputMaybe<Admin_Select_Column[]>;
   distinct?: InputMaybe<Scalars['Boolean']>;
 }
 
 /** Boolean expression to filter rows from the table "admin". All fields are combined with a logical 'AND'. */
 export interface Admin_Bool_Exp {
-  _and?: InputMaybe<Array<Admin_Bool_Exp>>;
+  _and?: InputMaybe<Admin_Bool_Exp[]>;
   _not?: InputMaybe<Admin_Bool_Exp>;
-  _or?: InputMaybe<Array<Admin_Bool_Exp>>;
+  _or?: InputMaybe<Admin_Bool_Exp[]>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   password?: InputMaybe<String_Comparison_Exp>;
   username?: InputMaybe<String_Comparison_Exp>;
@@ -142,13 +142,13 @@ export interface Admin_Mutation_Response {
   /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
-  returning: Array<Admin>;
+  returning: Admin[];
 }
 
 /** on_conflict condition type for table "admin" */
 export interface Admin_On_Conflict {
   constraint: Admin_Constraint;
-  update_columns?: Array<Admin_Update_Column>;
+  update_columns?: Admin_Update_Column[];
   where?: InputMaybe<Admin_Bool_Exp>;
 }
 
@@ -235,7 +235,7 @@ export interface Menu {
 export interface Menu_Aggregate {
   __typename?: 'menu_aggregate';
   aggregate?: Maybe<Menu_Aggregate_Fields>;
-  nodes: Array<Menu>;
+  nodes: Menu[];
 }
 
 /** aggregate fields of "menu" */
@@ -256,7 +256,7 @@ export interface Menu_Aggregate_Fields {
 
 /** aggregate fields of "menu" */
 export interface Menu_Aggregate_FieldsCountArgs {
-  columns?: InputMaybe<Array<Menu_Select_Column>>;
+  columns?: InputMaybe<Menu_Select_Column[]>;
   distinct?: InputMaybe<Scalars['Boolean']>;
 }
 
@@ -269,9 +269,9 @@ export interface Menu_Avg_Fields {
 
 /** Boolean expression to filter rows from the table "menu". All fields are combined with a logical 'AND'. */
 export interface Menu_Bool_Exp {
-  _and?: InputMaybe<Array<Menu_Bool_Exp>>;
+  _and?: InputMaybe<Menu_Bool_Exp[]>;
   _not?: InputMaybe<Menu_Bool_Exp>;
-  _or?: InputMaybe<Array<Menu_Bool_Exp>>;
+  _or?: InputMaybe<Menu_Bool_Exp[]>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   image?: InputMaybe<String_Comparison_Exp>;
   ingredients?: InputMaybe<String_Comparison_Exp>;
@@ -330,13 +330,13 @@ export interface Menu_Mutation_Response {
   /** number of rows affected by the mutation */
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
-  returning: Array<Menu>;
+  returning: Menu[];
 }
 
 /** on_conflict condition type for table "menu" */
 export interface Menu_On_Conflict {
   constraint: Menu_Constraint;
-  update_columns?: Array<Menu_Update_Column>;
+  update_columns?: Menu_Update_Column[];
   where?: InputMaybe<Menu_Bool_Exp>;
 }
 
@@ -529,7 +529,7 @@ export interface Mutation_RootDelete_Menu_By_PkArgs {
 
 /** mutation root */
 export interface Mutation_RootInsert_AdminArgs {
-  objects: Array<Admin_Insert_Input>;
+  objects: Admin_Insert_Input[];
   on_conflict?: InputMaybe<Admin_On_Conflict>;
 }
 
@@ -541,7 +541,7 @@ export interface Mutation_RootInsert_Admin_OneArgs {
 
 /** mutation root */
 export interface Mutation_RootInsert_MenuArgs {
-  objects: Array<Menu_Insert_Input>;
+  objects: Menu_Insert_Input[];
   on_conflict?: InputMaybe<Menu_On_Conflict>;
 }
 
@@ -570,7 +570,7 @@ export interface Mutation_RootUpdate_Admin_By_PkArgs {
 
 /** mutation root */
 export interface Mutation_RootUpdate_Admin_ManyArgs {
-  updates: Array<Admin_Updates>;
+  updates: Admin_Updates[];
 }
 
 /** mutation root */
@@ -589,7 +589,7 @@ export interface Mutation_RootUpdate_Menu_By_PkArgs {
 
 /** mutation root */
 export interface Mutation_RootUpdate_Menu_ManyArgs {
-  updates: Array<Menu_Updates>;
+  updates: Menu_Updates[];
 }
 
 /** Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'. */
@@ -624,13 +624,13 @@ export enum Order_By {
 export interface Query_Root {
   __typename?: 'query_root';
   /** fetch data from the table: "admin" */
-  admin: Array<Admin>;
+  admin: Admin[];
   /** fetch aggregated fields from the table: "admin" */
   admin_aggregate: Admin_Aggregate;
   /** fetch data from the table: "admin" using primary key columns */
   admin_by_pk?: Maybe<Admin>;
   /** fetch data from the table: "menu" */
-  menu: Array<Menu>;
+  menu: Menu[];
   /** fetch aggregated fields from the table: "menu" */
   menu_aggregate: Menu_Aggregate;
   /** fetch data from the table: "menu" using primary key columns */
@@ -638,18 +638,18 @@ export interface Query_Root {
 }
 
 export interface Query_RootAdminArgs {
-  distinct_on?: InputMaybe<Array<Admin_Select_Column>>;
+  distinct_on?: InputMaybe<Admin_Select_Column[]>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Admin_Order_By>>;
+  order_by?: InputMaybe<Admin_Order_By[]>;
   where?: InputMaybe<Admin_Bool_Exp>;
 }
 
 export interface Query_RootAdmin_AggregateArgs {
-  distinct_on?: InputMaybe<Array<Admin_Select_Column>>;
+  distinct_on?: InputMaybe<Admin_Select_Column[]>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Admin_Order_By>>;
+  order_by?: InputMaybe<Admin_Order_By[]>;
   where?: InputMaybe<Admin_Bool_Exp>;
 }
 
@@ -658,18 +658,18 @@ export interface Query_RootAdmin_By_PkArgs {
 }
 
 export interface Query_RootMenuArgs {
-  distinct_on?: InputMaybe<Array<Menu_Select_Column>>;
+  distinct_on?: InputMaybe<Menu_Select_Column[]>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Menu_Order_By>>;
+  order_by?: InputMaybe<Menu_Order_By[]>;
   where?: InputMaybe<Menu_Bool_Exp>;
 }
 
 export interface Query_RootMenu_AggregateArgs {
-  distinct_on?: InputMaybe<Array<Menu_Select_Column>>;
+  distinct_on?: InputMaybe<Menu_Select_Column[]>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Menu_Order_By>>;
+  order_by?: InputMaybe<Menu_Order_By[]>;
   where?: InputMaybe<Menu_Bool_Exp>;
 }
 
@@ -680,36 +680,36 @@ export interface Query_RootMenu_By_PkArgs {
 export interface Subscription_Root {
   __typename?: 'subscription_root';
   /** fetch data from the table: "admin" */
-  admin: Array<Admin>;
+  admin: Admin[];
   /** fetch aggregated fields from the table: "admin" */
   admin_aggregate: Admin_Aggregate;
   /** fetch data from the table: "admin" using primary key columns */
   admin_by_pk?: Maybe<Admin>;
   /** fetch data from the table in a streaming manner: "admin" */
-  admin_stream: Array<Admin>;
+  admin_stream: Admin[];
   /** fetch data from the table: "menu" */
-  menu: Array<Menu>;
+  menu: Menu[];
   /** fetch aggregated fields from the table: "menu" */
   menu_aggregate: Menu_Aggregate;
   /** fetch data from the table: "menu" using primary key columns */
   menu_by_pk?: Maybe<Menu>;
   /** fetch data from the table in a streaming manner: "menu" */
-  menu_stream: Array<Menu>;
+  menu_stream: Menu[];
 }
 
 export interface Subscription_RootAdminArgs {
-  distinct_on?: InputMaybe<Array<Admin_Select_Column>>;
+  distinct_on?: InputMaybe<Admin_Select_Column[]>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Admin_Order_By>>;
+  order_by?: InputMaybe<Admin_Order_By[]>;
   where?: InputMaybe<Admin_Bool_Exp>;
 }
 
 export interface Subscription_RootAdmin_AggregateArgs {
-  distinct_on?: InputMaybe<Array<Admin_Select_Column>>;
+  distinct_on?: InputMaybe<Admin_Select_Column[]>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Admin_Order_By>>;
+  order_by?: InputMaybe<Admin_Order_By[]>;
   where?: InputMaybe<Admin_Bool_Exp>;
 }
 
@@ -724,18 +724,18 @@ export interface Subscription_RootAdmin_StreamArgs {
 }
 
 export interface Subscription_RootMenuArgs {
-  distinct_on?: InputMaybe<Array<Menu_Select_Column>>;
+  distinct_on?: InputMaybe<Menu_Select_Column[]>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Menu_Order_By>>;
+  order_by?: InputMaybe<Menu_Order_By[]>;
   where?: InputMaybe<Menu_Bool_Exp>;
 }
 
 export interface Subscription_RootMenu_AggregateArgs {
-  distinct_on?: InputMaybe<Array<Menu_Select_Column>>;
+  distinct_on?: InputMaybe<Menu_Select_Column[]>;
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
-  order_by?: InputMaybe<Array<Menu_Order_By>>;
+  order_by?: InputMaybe<Menu_Order_By[]>;
   where?: InputMaybe<Menu_Bool_Exp>;
 }
 
@@ -768,14 +768,15 @@ export type InsertAdminMutationVariables = Exact<{
 }>;
 
 export interface InsertAdminMutation {
-  __typename?: 'mutation_root',
+  __typename?: 'mutation_root';
   insert_admin?: {
-    __typename?: 'admin_mutation_response',
+    __typename?: 'admin_mutation_response';
     returning: Array<{
-      __typename?: 'admin',
-      id: any }>;
-  } | null }
-};
+      __typename?: 'admin';
+      id: any;
+    }>;
+  } | null;
+}
 
 export const InsertAdminDocument = gql`
   mutation InsertAdmin($password: String = "", $username: String = "") {
@@ -797,7 +798,7 @@ const defaultWrapper: SdkFunctionWrapper = async (
   action,
   _operationName,
   _operationType
-) => action();
+) => await action();
 
 export function getSdk(
   client: GraphQLClient,
@@ -808,7 +809,19 @@ export function getSdk(
       variables?: InsertAdminMutationVariables,
       requestHeaders?: Dom.RequestInit['headers']
     ): Promise<InsertAdminMutation> {
-      return withWrapper(async (wrappedRequestHeaders) => client.request<InsertAdminMutation>(InsertAdminDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'InsertAdmin', 'mutation');
+      return await withWrapper(
+        async (wrappedRequestHeaders) =>
+          await client.request<InsertAdminMutation>(
+            InsertAdminDocument,
+            variables,
+            {
+              ...requestHeaders,
+              ...wrappedRequestHeaders,
+            }
+          ),
+        'InsertAdmin',
+        'mutation'
+      );
     },
   };
 }
