@@ -26,6 +26,7 @@ module.exports = {
     'dot-notation': ['error', { allowPattern: '^[a-z]+(_[a-z]+)+$' }],
     '@typescript-eslint/explicit-function-return-type': 'warn',
     '@typescript-eslint/consistent-type-assertions': 'warn',
+    '@typescript-eslint/no-non-null-assertion': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'no-multiple-empty-lines': 'error',
